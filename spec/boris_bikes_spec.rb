@@ -6,8 +6,10 @@ describe DockingStation do
     @docking_station = DockingStation.new
   end
 
-  it "should create new object of class DockingStation" do
+  it "creates new object of class DockingStation" do
     expect(@docking_station.class).to eq DockingStation
   end
+
+  it { expect(@docking_station).to respond_to(:release_bike) }
 
 end
