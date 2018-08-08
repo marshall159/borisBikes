@@ -10,6 +10,6 @@ describe DockingStation do
     expect(@docking_station.class).to eq DockingStation
   end
 
-  it { expect(@docking_station).to respond_to(:release_bike) }
+  it { is_expected.to respond_to(:release_bike) }
 
 end
