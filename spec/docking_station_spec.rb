@@ -32,10 +32,17 @@ describe DockingStation do
   it "raises an error if there are no bikes" do
     expect { @docking_station.release_bike }.to raise_error("There are no bikes")
   end
+  
+  context "when dock is full" do
+    before(:context) do
+      @full_dock = DockingStation.new
+      DockingStation::DEFAULT_CAPACITY.times { @full_dock.dock(Bike.new) }
+    end
 
-  it "will not accept more bikes than capacity" do
-    bike = Bike.new
-    subject.dock(Bike.new)
-    expect { subject.dock(bike) }.to raise_error("Dock Full")
+    it "will not accept more bikes than capacity" do
+      bike = Bike.new
+      expect { @full_dock.dock(bike) }.to raise_error("Dock Full")
+    end
   end
+
 end
