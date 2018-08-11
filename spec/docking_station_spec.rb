@@ -33,10 +33,6 @@ describe DockingStation do
     expect { @docking_station.release_bike }.to raise_error("There are no bikes")
   end
 
-  it "#full? returns false if the dock is not full" do
-    expect(@docking_station).not_to be_full
-  end
-
   context "when dock is full" do
     before(:context) do
       @full_dock = DockingStation.new
@@ -46,10 +42,6 @@ describe DockingStation do
     it "will not accept more bikes than capacity" do
       bike = Bike.new
       expect { @full_dock.dock(bike) }.to raise_error("Dock Full")
-    end
-
-    it "#full? will return true" do
-      expect(@full_dock).to be_full
     end
   end
 

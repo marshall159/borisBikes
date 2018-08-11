@@ -19,6 +19,8 @@ class DockingStation
     docked_bikes << bike
   end
 
+  private
+
   def full?
     docked_bikes.length >= capacity
   end
