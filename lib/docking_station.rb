@@ -19,4 +19,9 @@ class DockingStation
     raise("Dock Full") if docked_bikes.length >= capacity
     docked_bikes << bike
   end
+
+  def full?
+    #raise("Dock Full") if docked_bikes.length >= capacity
+    docked_bikes.length >= capacity
+  end
 end

@@ -2,7 +2,7 @@ require "docking_station"
 
 describe DockingStation do
 
-  before do
+  before(:example) do
     @docking_station = DockingStation.new
   end
 
@@ -32,7 +32,7 @@ describe DockingStation do
   it "raises an error if there are no bikes" do
     expect { @docking_station.release_bike }.to raise_error("There are no bikes")
   end
-  
+
   context "when dock is full" do
     before(:context) do
       @full_dock = DockingStation.new
@@ -42,6 +42,10 @@ describe DockingStation do
     it "will not accept more bikes than capacity" do
       bike = Bike.new
       expect { @full_dock.dock(bike) }.to raise_error("Dock Full")
+    end
+
+    it "#full? will return true" do
+      expect(@full_dock).to be_full
     end
   end
 
