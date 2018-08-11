@@ -43,6 +43,12 @@ describe DockingStation do
     expect(subject.capacity).to eq(10)
   end
 
+  it "allows reporting a bike as broken once returned" do
+    bike = Bike.new
+    expect(@docking_station).to respond_to(:dock_broken_bike).with(1).argument
+  end
+
+
   context "when dock is full" do
     before(:context) do
       @full_dock = DockingStation.new
