@@ -55,4 +55,17 @@ describe DockingStation do
     end
   end
 
+  # context "when bike is broken and then docked" do
+  #   before(:context) do
+  #     @bike = Bike.new
+  #     @docking_station = DockingStation.new
+  #     @bike.report_broken
+  #     @docking_station.dock(@bike)
+  #   end
+  #
+  #   it "does not release broken bike" do
+  #     expect{ @docking_station.release_bike }.to raise_error("Broken bike")
+  #   end
+  # end
+
 end
