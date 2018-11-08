@@ -2,45 +2,42 @@ require "docking_station"
 
 describe DockingStation do
 
-  before(:example) do
-    @docking_station = DockingStation.new
-  end
-
   it "creates new object of class DockingStation" do
-    expect(@docking_station.class).to eq DockingStation
+    expect(subject.class).to eq DockingStation
   end
 
   it "releases a bike" do
     bike = Bike.new
-    @docking_station.dock(bike)
-    expect(@docking_station.release_bike).to eq bike
+    subject.dock(bike)
+    expect(subject.release_bike).to eq bike
   end
 
   it 'gets working bike' do
     bike = Bike.new
-    @docking_station.dock(bike)
-    released_bike = @docking_station.release_bike
+    subject.dock(bike)
+    released_bike = subject.release_bike
     expect(released_bike).to be_working
   end
 
   it "allows docking a bicycle" do
     bike = Bike.new
-    @docking_station.dock(bike)
-    expect(@docking_station.docked_bikes).not_to be_empty
+    subject.dock(bike)
+    expect(subject.docked_bikes).not_to be_empty
   end
 
   it "raises an error if there are no bikes" do
-    expect { @docking_station.release_bike }.to raise_error("There are no bikes")
+    expect { subject.release_bike }.to raise_error("There are no bikes")
   end
 
   it "sets default a capacity when no arguments passed" do
-    expect(@docking_station.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+    expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
   end
 
-  subject { DockingStation.new(10) }
-
-  it "allows setting the capacity when cretaing a DockingStation" do
-    expect(subject.capacity).to eq(10)
+  context do
+    it "allows setting the capacity when cretaing a DockingStation" do
+      dock =  DockingStation.new(10)
+      expect(dock.capacity).to eq(10)
+    end
   end
 
   context "when dock is full" do
