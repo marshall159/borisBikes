@@ -4,7 +4,7 @@ class DockingStation
   attr_reader :bike #, :capacity
   # DEFAULT_CAPACITY = 20
 
-  # @bike = nil
+  @bike = nil
 
   # def initialize(capacity = DEFAULT_CAPACITY)
   #   @docked_bikes = []
@@ -13,10 +13,11 @@ class DockingStation
   # end
 
   def release_bike
-    # raise("There are no bikes") if empty?
+    # guard condition
+    raise("There are no bikes") unless bike
     # raise("Broken bike") if docked_bikes.last.broken?
     # docked_bikes.pop
-    Bike.new
+    bike
   end
 
   def dock(bike)
