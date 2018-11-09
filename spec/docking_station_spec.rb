@@ -25,10 +25,20 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
+  it { is_expected.to respond_to(:dock).with(1).argument }
+
+  it { is_expected.to respond_to(:bike) }
+
   it "allows docking a bicycle" do
     bike = Bike.new
+    # subject.dock(bike)
+    expect(subject.dock(bike)).to eq(bike)
+  end
+
+  it "returns docked bikes" do
+    bike = Bike.new
     subject.dock(bike)
-    expect(subject.docked_bikes).to be_instance_of(Bike)
+    expect(subject.bike).to equal(bike)
   end
 
 #   it "raises an error if there are no bikes" do
