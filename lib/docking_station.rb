@@ -1,4 +1,4 @@
-# require_relative 'bike'
+require_relative 'bike'
 
 class DockingStation
   # attr_reader :docked_bikes, :capacity
@@ -14,6 +14,7 @@ class DockingStation
     # raise("There are no bikes") if empty?
     # raise("Broken bike") if docked_bikes.last.broken?
     # docked_bikes.pop
+    Bike.new
   end
 
   # def dock(bike)

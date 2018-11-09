@@ -12,11 +12,11 @@ describe DockingStation do
     # it { is_expected.to respond_to :release_bike }
   end
 
-#   it "releases a bike" do
-#     bike = Bike.new
-#     subject.dock(bike)
-#     expect(subject.release_bike).to eq bike
-#   end
+  it "releases a bike" do
+    # bike = Bike.new
+    # subject.dock(bike)
+    expect(subject.release_bike).to be_instance_of(Bike)
+  end
 
 #   it 'gets working bike' do
 #     bike = Bike.new
