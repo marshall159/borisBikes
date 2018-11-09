@@ -12,19 +12,20 @@ class DockingStation
   #   @capacity = capacity
   # end
 
+  def dock(bike)
+    # guard condition
+    raise("Docking Station Full") if @bike 
+    # docked_bikes << bike
+    # @docked_bikes = bike
+    @bike = bike 
+  end
+
   def release_bike
     # guard condition
     raise("There are no bikes") unless bike
     # raise("Broken bike") if docked_bikes.last.broken?
     # docked_bikes.pop
     bike
-  end
-
-  def dock(bike)
-    # raise("Dock Full") if full?
-    # docked_bikes << bike
-    # @docked_bikes = bike
-    @bike = bike 
   end
 
   # def dock_broken_bike(bike)

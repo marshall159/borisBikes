@@ -18,6 +18,27 @@ describe DockingStation do
     end
   end
 
+  describe "#dock" do
+    it { is_expected.to respond_to(:dock).with(1).argument }
+
+    it "allows docking a bicycle" do
+      bike = Bike.new
+      # subject.dock(bike)
+      expect(subject.dock(bike)).to eq(bike)
+    end
+  
+    it "returns docked bikes" do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.bike).to equal(bike)
+    end
+  
+    it "will not accept more bikes than capacity" do
+      subject.dock(Bike.new)
+      expect { subject.dock(Bike.new) }.to raise_error("Docking Station Full")
+    end
+  end
+
   # it 'gets a working bike' do
   #   bike = subject.release_bike
   #   # subject.dock(bike)
@@ -25,21 +46,9 @@ describe DockingStation do
   #   expect(bike).to be_working
   # end
 
-  it { is_expected.to respond_to(:dock).with(1).argument }
+  
 
   it { is_expected.to respond_to(:bike) }
-
-  it "allows docking a bicycle" do
-    bike = Bike.new
-    # subject.dock(bike)
-    expect(subject.dock(bike)).to eq(bike)
-  end
-
-  it "returns docked bikes" do
-    bike = Bike.new
-    subject.dock(bike)
-    expect(subject.bike).to equal(bike)
-  end
 
 
 #   it "sets default a capacity when no arguments passed" do
@@ -59,10 +68,6 @@ describe DockingStation do
 #       DockingStation::DEFAULT_CAPACITY.times { @full_dock.dock(Bike.new) }
 #     end
 
-#     it "will not accept more bikes than capacity" do
-#       bike = Bike.new
-#       expect { @full_dock.dock(bike) }.to raise_error("Dock Full")
-#     end
 #   end
 
 #   # context "when bike is broken and then docked" do
