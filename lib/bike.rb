@@ -5,7 +5,7 @@ class Bike
 #   # end
 
   def working?
-    # true
+    true
   end
 
 #   def report_broken

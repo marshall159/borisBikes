@@ -13,17 +13,17 @@ describe DockingStation do
   end
 
   it "releases a bike" do
-    # bike = Bike.new
+    bike = subject.release_bike
     # subject.dock(bike)
-    expect(subject.release_bike).to be_instance_of(Bike)
+    expect(bike).to be_instance_of(Bike)
   end
 
-#   it 'gets working bike' do
-#     bike = Bike.new
-#     subject.dock(bike)
-#     released_bike = subject.release_bike
-#     expect(released_bike).to be_working
-#   end
+  it 'gets a working bike' do
+    bike = subject.release_bike
+    # subject.dock(bike)
+    # released_bike = subject.release_bike
+    expect(bike).to be_working
+  end
 
 #   it "allows docking a bicycle" do
 #     bike = Bike.new
