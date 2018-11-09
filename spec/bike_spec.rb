@@ -9,10 +9,14 @@ describe Bike do
     expect(subject).to respond_to(:working?)
   end
 
-#   it "bike can be reported as broken" do
-#     subject.report_broken
-#     expect(subject).to be_broken
-#   end
+  it "can be reported as broken" do
+    subject.report_broken
+    expect(subject).not_to be_working
+  end
+
+  it "is not broken initially" do
+    expect(subject).to be_working
+  end
 
 #   # it "#broken? tells you if bike is broken, returns boolean" do
 #   #   expect(subject.broken?).to be false
