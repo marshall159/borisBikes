@@ -1,9 +1,13 @@
-# require 'bike'
+require 'bike'
 
-# describe Bike do
-#   it "responds to method working?" do
-#     expect(subject).to respond_to(:working?)
-#   end
+describe Bike do
+  it "creates new object of class Bike" do
+    expect(subject).to be_instance_of(Bike)
+  end
+
+  it "responds to #working?" do
+    expect(subject).to respond_to(:working?)
+  end
 
 #   it "bike can be reported as broken" do
 #     subject.report_broken
@@ -28,4 +32,4 @@
 
 
 
-# end
+end
