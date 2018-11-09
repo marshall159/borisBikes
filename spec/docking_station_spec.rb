@@ -25,11 +25,11 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
-#   it "allows docking a bicycle" do
-#     bike = Bike.new
-#     subject.dock(bike)
-#     expect(subject.docked_bikes).not_to be_empty
-#   end
+  it "allows docking a bicycle" do
+    bike = Bike.new
+    subject.dock(bike)
+    expect(subject.docked_bikes).to be_instance_of(Bike)
+  end
 
 #   it "raises an error if there are no bikes" do
 #     expect { subject.release_bike }.to raise_error("There are no bikes")
