@@ -29,15 +29,39 @@ describe DockingStation do
   
     it "returns docked bikes" do
       bike = Bike.new
+
       subject.dock(bike)
-      expect(subject.bikes.last).to equal(bike)
+      
+      expect(subject.release_bike).to equal(bike)
     end
   
     it "raises an error when full" do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock(Bike.new) }
+      subject.capacity.times { subject.dock(Bike.new) }
       expect { subject.dock(Bike.new) }.to raise_error("Docking Station Full")
     end
   end
+
+  it "has a default capacity" do
+    described_class::DEFAULT_CAPACITY.times { subject.dock(Bike.new) }
+
+    expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+    expect { subject.dock(Bike.new) }.to raise_error("Docking Station Full")
+  end
+
+  it "allows setting the capacity when cretaing a DockingStation" do
+    docking_station =  DockingStation.new(10)
+
+    10.times { docking_station.dock(Bike.new) }
+
+    expect(docking_station.capacity).to eq(10)
+    expect { docking_station.dock(Bike.new) }.to raise_error("Docking Station Full")
+  end
+
+  # describe "Capacity" do
+
+  #   context "capacity is set"
+ 
+  # end
 
   # it 'gets a working bike' do
   #   bike = subject.release_bike
@@ -51,12 +75,6 @@ describe DockingStation do
 #     expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
 #   end
 
-#   context do
-#     it "allows setting the capacity when cretaing a DockingStation" do
-#       dock =  DockingStation.new(10)
-#       expect(dock.capacity).to eq(10)
-#     end
-#   end
 
 #   context "when dock is full" do
 #     before(:context) do
