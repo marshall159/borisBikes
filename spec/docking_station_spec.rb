@@ -59,18 +59,16 @@ describe DockingStation do
 
 
   context "when bike is broken and then docked" do
-    before(:context) do
-      @bike_one = Bike.new
-      @bike_two = Bike.new
-      @docking_station = DockingStation.new
-      @docking_station.dock(@bike_one)
-      @bike_two.report_broken
-      @docking_station.dock(@bike_two)
-    end
   
     it "does not release broken bike" do
       # expect{ @docking_station.release_bike }.to raise_error("Broken bike")
-      expect(@docking_station.release_bike).to eq(@bike_one)
+      bike = Bike.new
+      bike.report_broken
+      
+      subject.dock(Bike.new)
+      subject.dock(bike)
+      
+      expect(subject.release_bike).not_to be_broken
     end
   end
 
