@@ -57,44 +57,21 @@ describe DockingStation do
     expect { docking_station.dock(Bike.new) }.to raise_error("Docking Station Full")
   end
 
-  # describe "Capacity" do
 
-  #   context "capacity is set"
- 
-  # end
-
-  # it 'gets a working bike' do
-  #   bike = subject.release_bike
-  #   # subject.dock(bike)
-  #   # released_bike = subject.release_bike
-  #   expect(bike).to be_working
-  # end
-
-
-#   it "sets default a capacity when no arguments passed" do
-#     expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
-#   end
-
-
-#   context "when dock is full" do
-#     before(:context) do
-#       @full_dock = DockingStation.new
-#       DockingStation::DEFAULT_CAPACITY.times { @full_dock.dock(Bike.new) }
-#     end
-
-#   end
-
-#   # context "when bike is broken and then docked" do
-#   #   before(:context) do
-#   #     @bike = Bike.new
-#   #     @docking_station = DockingStation.new
-#   #     @bike.report_broken
-#   #     @docking_station.dock(@bike)
-#   #   end
-#   #
-#   #   it "does not release broken bike" do
-#   #     expect{ @docking_station.release_bike }.to raise_error("Broken bike")
-#   #   end
-#   # end
+  context "when bike is broken and then docked" do
+    before(:context) do
+      @bike_one = Bike.new
+      @bike_two = Bike.new
+      @docking_station = DockingStation.new
+      @docking_station.dock(@bike_one)
+      @bike_two.report_broken
+      @docking_station.dock(@bike_two)
+    end
+  
+    it "does not release broken bike" do
+      # expect{ @docking_station.release_bike }.to raise_error("Broken bike")
+      expect(@docking_station.release_bike).to eq(@bike_one)
+    end
+  end
 
 end

@@ -6,7 +6,7 @@ class DockingStation
 
   def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
-    # @docked_broken_bikes = []
+    # @broken_bikes = []
     @capacity = capacity
   end
 
@@ -21,7 +21,7 @@ class DockingStation
     # guard condition
     raise("There are no bikes") if empty? 
     # raise("Broken bike") if docked_bikes.last.broken?
-    bikes.pop 
+    return_working_bike 
   end
 
   private
@@ -36,18 +36,8 @@ class DockingStation
     bikes.empty?
   end
 
-  # def dock_broken_bike(bike)
-  #   raise("Dock Full") if full?
-  #   docked_broken_bikes << bike
-  # end
+  def return_working_bike
+    bikes.select { |bike| !bike.broken? }.pop
+  end
 
-  # private
-
-  # def full?
-  #   docked_bikes.length >= DEFAULT_CAPACITY
-  # end
-
-  # def empty?
-  #   docked_bikes.empty?
-  # end
 end

@@ -11,29 +11,12 @@ describe Bike do
 
   it "can be reported as broken" do
     subject.report_broken
+    
     expect(subject).to be_broken 
   end
 
   it "is not broken initially" do
     expect(subject.broken?).to eq(false)
   end
-
-#   # it "#broken? tells you if bike is broken, returns boolean" do
-#   #   expect(subject.broken?).to be false
-#   # end
-
-#   context "bike is reported broken" do
-#     before(:context) do
-#       @bike = Bike.new
-#       @bike.report_broken
-#     end
-
-#     it "#broken? returns true" do
-#       expect(@bike.broken?).to be true
-#     end
-
-#   end
-
-
 
 end
