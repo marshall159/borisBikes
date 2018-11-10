@@ -14,9 +14,9 @@ describe Bike do
     expect(subject).to be_broken 
   end
 
-  # it "is not broken initially" do
-  #   expect(subject).to be_working
-  # end
+  it "is not broken initially" do
+    expect(subject.broken?).to eq(false)
+  end
 
 #   # it "#broken? tells you if bike is broken, returns boolean" do
 #   #   expect(subject.broken?).to be false
