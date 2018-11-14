@@ -7,7 +7,7 @@ describe DockingStation do
   end
 
   describe "#release_bike" do
-    it "releases a bike" do
+    it "releases working bikes" do
       bikeDouble = double("Bike", :broken? => false)
 
       subject.dock(bikeDouble)
