@@ -11,12 +11,22 @@ describe Bike do
 
   it "can be reported as broken" do
     subject.report_broken
-    
+
     expect(subject).to be_broken 
   end
 
   it "is not broken initially" do
     expect(subject.broken?).to eq(false)
+  end
+
+  it "can be repaired" do
+    subject.report_broken
+
+    expect(subject).to be_broken
+    
+    subject.repair 
+
+    expect(subject).not_to be_broken 
   end
 
 end

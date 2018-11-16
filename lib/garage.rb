@@ -8,4 +8,8 @@ class Garage
     def collect(bike)
         storage << bike 
     end
+
+    def repair_bikes
+        storage.each { |bike| bike.repair }
+    end
 end

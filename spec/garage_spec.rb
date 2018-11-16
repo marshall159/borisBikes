@@ -15,4 +15,11 @@ describe Garage do
         expect(subject.storage).to include(bike)
     end
 
+    it "repairs bikes" do 
+        expect(bike).to receive(:repair)
+
+        subject.collect(bike)
+        
+        subject.repair_bikes
+    end
 end
