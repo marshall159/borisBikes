@@ -10,7 +10,7 @@ class Van
         @storage << bike
     end
 
-    # def deliver 
-    #     storage.pop
-    # end
+    def deliver 
+        storage.pop
+    end
 end
