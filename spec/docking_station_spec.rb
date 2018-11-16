@@ -20,6 +20,18 @@ describe DockingStation do
     end
   end
 
+  describe "#release_broken_bike" do 
+    it "releases broken bikes" do 
+      broken_bike = double("Bike", broken?: true)
+      bike = double("Bike", broken?: false)
+
+      subject.dock(broken_bike)
+      subject.dock(bike)
+
+      expect(subject.release_broken_bike).to equal(broken_bike)
+    end
+  end
+
   describe "#dock" do
     it { is_expected.to respond_to(:dock).with(1).argument }
 

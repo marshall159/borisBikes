@@ -24,6 +24,10 @@ class DockingStation
     return_working_bike 
   end
 
+  def release_broken_bike
+    bikes.select { |bike| bike.broken? }.pop 
+  end
+
   private
 
   attr_reader :bikes
