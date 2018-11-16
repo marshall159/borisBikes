@@ -25,7 +25,7 @@ class DockingStation
   end
 
   def release_broken_bike
-    bikes.select { |bike| bike.broken? }.pop 
+    bikes.delete_at( bikes.index { |bike| bike.broken? } )
   end
 
   private
@@ -41,7 +41,7 @@ class DockingStation
   end
 
   def return_working_bike
-    bikes.select { |bike| !bike.broken? }.pop
+    bikes.delete_at( bikes.index { |bike| !bike.broken? } )
   end
 
 end
