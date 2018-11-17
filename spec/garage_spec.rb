@@ -22,4 +22,12 @@ describe Garage do
         
         subject.repair_bikes
     end
+
+    it "releases bikes" do
+        subject.collect(bike)
+
+        subject.release
+
+        expect(subject.storage).to be_empty
+    end
 end

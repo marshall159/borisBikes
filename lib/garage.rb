@@ -9,6 +9,10 @@ class Garage
         storage << bike 
     end
 
+    def release 
+        storage.pop
+    end
+
     def repair_bikes
         storage.each { |bike| bike.repair }
     end
